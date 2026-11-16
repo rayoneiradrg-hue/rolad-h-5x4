@@ -12,7 +12,7 @@ jobs:
       - name: Descargar proyecto
         uses: actions/checkout@v4
 
-      - name: Instalar Java 25
+      - name: Instalar Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -21,7 +21,7 @@ jobs:
       - name: Configurar Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '9.1.0'
+          gradle-version: '9.9.0'
 
       - name: Compilar
         run: gradle build

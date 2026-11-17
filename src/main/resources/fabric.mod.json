@@ -1,6 +1,18 @@
 {
- "schemaVersion":1,"id":"rolandtractor","version":"${version}","name":"Roland H 5x4",
- "description":"Primera etapa del mod Roland H 5x4.","authors":["Roland H 5x4 Project"],
- "environment":"*","entrypoints":{"main":["ar.roland.tractor.RolandTractorMod"],"client":["ar.roland.tractor.RolandTractorClient"]},
- "depends":{"fabricloader":">=0.16.0","minecraft":"~26.3","java":">=25","fabric-api":"*"}
+  "schemaVersion": 1,
+  "id": "rolandtractor",
+  "version": "${version}",
+  "name": "Roland H 5x4",
+  "description": "Vehiculo agricola Roland H 5x4 — prototipo en desarrollo.",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["ar.roland.tractor.RolandTractorMod"],
+    "client": ["ar.roland.tractor.RolandTractorClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.20.1",
+    "minecraft": "26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
 }

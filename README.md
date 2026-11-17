@@ -1,10 +1,13 @@
-# Roland H 5x4 — etapa 1
+# Roland H 5x4 — proyecto Fabric 26.3
 
-Proyecto fuente para Minecraft Java 26.3 + Fabric.
+Proyecto fuente inicial ampliado. **No es todavía un tractor terminado ni un JAR probado.**
+Incluye una entidad de vehículo con controles, estado de motor, freno, luces y cortadora como lógica base.
+La compatibilidad de las clases y mappings debe verificarse contra el entorno Fabric 26.3 antes de distribuir.
 
-Incluye la estructura Fabric, inicializadores y una tecla K que muestra un mensaje de diagnóstico.
-**No contiene todavía el tractor jugable ni su modelo 3D, conducción, sonidos o cortadora.**
-Este ZIP es código fuente, no un JAR compilado.
+## Compilar
+Requiere Java 25 y Gradle 9.9:
+`gradle build`
+El JAR se genera en `build/libs/`.
 
-Requiere Java 25 y Gradle/Fabric Loom compatible. Ejecutar `gradle build`; el JAR se genera en `build/libs/`.
-La compilación y compatibilidad deben verificarse antes de instalar.
+## Controles previstos
+W/S acelerar y retroceder; A/D girar; E motor; F cortadora; G freno; L luces; R rango.

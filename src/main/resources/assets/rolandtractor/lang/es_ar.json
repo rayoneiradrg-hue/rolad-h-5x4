@@ -1,1 +1,7 @@
-{"key.rolandtractor.info":"Información del Roland H 5x4"}
+{
+  "key.rolandtractor.engine": "Roland: Encendido",
+  "key.rolandtractor.mower": "Roland: Cortadora",
+  "key.rolandtractor.brake": "Roland: Freno de mano",
+  "key.rolandtractor.lights": "Roland: Luces de trabajo",
+  "key.rolandtractor.range": "Roland: Rango de transmisión"
+}

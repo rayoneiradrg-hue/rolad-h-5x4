@@ -1,37 +1,56 @@
-plugins {
-    id 'net.fabricmc.fabric-loom' version "${loom_version}"
-}
+package com.roland.tractor;
 
-version = project.mod_version
-group = project.maven_group
+import net.fabricmc.api.ModInitializer;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
-base {
-    archivesName = project.archives_base_name
-}
+public final class RolandTractorMod implements ModInitializer {
 
-repositories {
-}
+    public static final String MOD_ID = "roland";
 
-dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-}
+    private static final Identifier TRACTOR_ID =
+            Identifier.fromNamespaceAndPath(MOD_ID, "roland_tractor");
 
-processResources {
-    inputs.property "version", project.version
+    private static final ResourceKey<Block> TRACTOR_BLOCK_KEY =
+            ResourceKey.create(Registries.BLOCK, TRACTOR_ID);
 
-    filesMatching("fabric.mod.json") {
-        expand "version": project.version
+    private static final ResourceKey<Item> TRACTOR_ITEM_KEY =
+            ResourceKey.create(Registries.ITEM, TRACTOR_ID);
+
+    @Override
+    public void onInitialize() {
+
+        Block tractorBlock = new Block(
+                BlockBehaviour.Properties.of()
+                        .strength(2.0f)
+                        .noOcclusion()
+                        .setId(TRACTOR_BLOCK_KEY)
+        );
+
+        Registry.register(
+                BuiltInRegistries.BLOCK,
+                TRACTOR_ID,
+                tractorBlock
+        );
+
+        BlockItem tractorItem = new BlockItem(
+                tractorBlock,
+                new Item.Properties()
+                        .setId(TRACTOR_ITEM_KEY)
+                        .useBlockDescriptionPrefix()
+        );
+
+        Registry.register(
+                BuiltInRegistries.ITEM,
+                TRACTOR_ID,
+                tractorItem
+        );
     }
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.release = 25
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_25
-    targetCompatibility = JavaVersion.VERSION_25
-    withSourcesJar()
 }

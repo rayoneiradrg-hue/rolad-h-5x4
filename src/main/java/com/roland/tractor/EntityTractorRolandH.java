@@ -1,6 +1,5 @@
 package com.roland.tractor;
 
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -13,8 +12,8 @@ import net.minecraft.world.phys.Vec3;
 
 public class EntityTractorRolandH extends Entity {
 
-    public EntityTractorRolandH(EntityType<? extends EntityTractorRolandH> type, Level level) {
-        super(type, level);
+    public EntityTractorRolandH(EntityType<? extends EntityTractorRolandH> entityType, Level level) {
+        super(entityType, level);
     }
 
     @Override
@@ -23,7 +22,7 @@ public class EntityTractorRolandH extends Entity {
 
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
-        if (!this.level().isClientSide() && !player.isShiftKeyDown()) {
+        if (!player.level().isClientSide() && !player.isShiftKeyDown()) {
             if (this.getPassengers().isEmpty()) {
                 player.startRiding(this);
                 return InteractionResult.SUCCESS;
@@ -38,25 +37,12 @@ public class EntityTractorRolandH extends Entity {
     }
 
     @Override
-    public boolean canBeCollidedWith() {
-        return true;
-    }
-
-    @Override
     public Vec3 getPassengerRidingPosition(Entity passenger) {
-        return new Vec3(0.0, 0.8, -0.3);
+        return this.position().add(0.0, 0.8, -0.3);
     }
 
     @Override
     public ItemStack getPickResult() {
         return new ItemStack(RolandTractorMod.TRACTOR_ITEM);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(CompoundTag tag) {
-    }
-
-    @Override
-    protected void readAdditionalSaveData(CompoundTag tag) {
     }
 }

@@ -1,45 +1,37 @@
-package com.roland.tractor;
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+    id 'maven-publish'
+}
 
-import net.fabricmc.api.ModInitializer;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+version = project.mod_version
+group = project.maven_group
 
-public class RolandTractorMod implements ModInitializer {
+base {
+    archivesName = project.archives_base_name
+}
 
-    public static final String MOD_ID = "roland";
+repositories {
+}
 
-    public static final Identifier TRACTOR_ID = Identifier.fromNamespaceAndPath(MOD_ID, "roland_tractor");
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
 
-    public static final ResourceKey<Block> TRACTOR_BLOCK_KEY = ResourceKey.create(Registries.BLOCK, TRACTOR_ID);
-    public static final ResourceKey<Item> TRACTOR_ITEM_KEY = ResourceKey.create(Registries.ITEM, TRACTOR_ID);
-
-    public static Block TRACTOR_BLOCK;
-    public static Item TRACTOR_ITEM;
-
-    @Override
-    public void onInitialize() {
-        // Crear el bloque
-        TRACTOR_BLOCK = new Block(BlockBehaviour.Properties.of()
-                .strength(2.0f)
-                .noOcclusion()
-                .setId(TRACTOR_BLOCK_KEY));
-
-        // Registrar el bloque
-        Registry.register(BuiltInRegistries.BLOCK, TRACTOR_ID, TRACTOR_BLOCK);
-
-        // Crear el item
-        TRACTOR_ITEM = new BlockItem(TRACTOR_BLOCK, new Item.Properties()
-                .setId(TRACTOR_ITEM_KEY)
-                .useBlockDescriptionPrefix());
-
-        // Registrar el item
-        Registry.register(BuiltInRegistries.ITEM, TRACTOR_ID, TRACTOR_ITEM);
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 25
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+    withSourcesJar()
 }

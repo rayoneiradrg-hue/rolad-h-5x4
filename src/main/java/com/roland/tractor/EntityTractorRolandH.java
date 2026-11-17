@@ -19,7 +19,6 @@ public class EntityTractorRolandH extends Entity {
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        // Vacío por ahora
     }
 
     @Override
@@ -44,8 +43,7 @@ public class EntityTractorRolandH extends Entity {
     }
 
     @Override
-    protected Vec3 getPassengerAttachmentPoint(Entity passenger, float scale) {
-        // Posición del asiento
+    public Vec3 getPassengerRidingPosition(Entity passenger) {
         return new Vec3(0.0, 0.8, -0.3);
     }
 
@@ -56,11 +54,9 @@ public class EntityTractorRolandH extends Entity {
 
     @Override
     protected void addAdditionalSaveData(CompoundTag tag) {
-        // Vacío por ahora
     }
 
     @Override
     protected void readAdditionalSaveData(CompoundTag tag) {
-        // Vacío por ahora
     }
 }

@@ -8,12 +8,13 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 public class EntityTractorRolandH extends Entity {
 
-    public EntityTractorRolandH(EntityType<? extends EntityTractorRolandH> entityType, Level level) {
-        super(entityType, level);
+    public EntityTractorRolandH(EntityType<? extends EntityTractorRolandH> type, Level level) {
+        super(type, level);
     }
 
     @Override
@@ -37,12 +38,15 @@ public class EntityTractorRolandH extends Entity {
     }
 
     @Override
-    public Vec3 getPassengerRidingPosition(Entity passenger) {
-        return this.position().add(0.0, 0.8, -0.3);
+    public ItemStack getPickResult() {
+        return new ItemStack(RolandTractorMod.TRACTOR_ITEM);
     }
 
     @Override
-    public ItemStack getPickResult() {
-        return new ItemStack(RolandTractorMod.TRACTOR_ITEM);
+    protected void addAdditionalSaveData(ValueOutput output) {
+    }
+
+    @Override
+    protected void readAdditionalSaveData(ValueInput input) {
     }
 }

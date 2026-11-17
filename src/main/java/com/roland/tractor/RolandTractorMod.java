@@ -7,12 +7,10 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SpawnEggItem;
 
 public class RolandTractorMod implements ModInitializer {
 
     public static final String MOD_ID = "roland";
-
     public static final Identifier TRACTOR_ID = Identifier.fromNamespaceAndPath(MOD_ID, "roland_tractor");
 
     public static EntityType<EntityTractorRolandH> TRACTOR_ENTITY;
@@ -30,11 +28,10 @@ public class RolandTractorMod implements ModInitializer {
                         .build(TRACTOR_ID.toString())
         );
 
-        TRACTOR_ITEM = new SpawnEggItem(
-                TRACTOR_ENTITY,
-                new Item.Properties().stacksTo(1)
+        TRACTOR_ITEM = Registry.register(
+                BuiltInRegistries.ITEM,
+                TRACTOR_ID,
+                new Item(new Item.Properties().stacksTo(1))
         );
-
-        Registry.register(BuiltInRegistries.ITEM, TRACTOR_ID, TRACTOR_ITEM);
     }
 }

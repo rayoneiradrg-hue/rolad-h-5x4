@@ -13,39 +13,35 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
-public final class RolandTractorMod implements ModInitializer {
+public class RolandTractorMod implements ModInitializer {
+
     public static final String MOD_ID = "roland";
 
-    private static final Identifier TRACTOR_ID =
-            Identifier.fromNamespaceAndPath(MOD_ID, "roland_tractor");
+    public static final Identifier TRACTOR_ID = Identifier.fromNamespaceAndPath(MOD_ID, "roland_tractor");
 
-    private static final ResourceKey<Block> TRACTOR_BLOCK_KEY =
-            ResourceKey.create(Registries.BLOCK, TRACTOR_ID);
+    public static final ResourceKey<Block> TRACTOR_BLOCK_KEY = ResourceKey.create(Registries.BLOCK, TRACTOR_ID);
+    public static final ResourceKey<Item> TRACTOR_ITEM_KEY = ResourceKey.create(Registries.ITEM, TRACTOR_ID);
 
-    private static final ResourceKey<Item> TRACTOR_ITEM_KEY =
-            ResourceKey.create(Registries.ITEM, TRACTOR_ID);
+    public static Block TRACTOR_BLOCK;
+    public static Item TRACTOR_ITEM;
 
     @Override
     public void onInitialize() {
-        Block tractorBlock = new Block(
-                BlockBehaviour.Properties.of()
-                        .strength(2.0f)
-                        .noOcclusion()
-                        .setId(TRACTOR_BLOCK_KEY)
-        );
+        TRACTOR_BLOCK = new Block(BlockBehaviour.Properties.of()
+                .strength(2.0f)
+                .noOcclusion()
+                .setId(TRACTOR_BLOCK_KEY));
 
-        Registry.register(BuiltInRegistries.BLOCK, TRACTOR_ID, tractorBlock);
+        Registry.register(BuiltInRegistries.BLOCK, TRACTOR_ID, TRACTOR_BLOCK);
 
-        BlockItem tractorItem = new BlockItem(
-                tractorBlock,
-                new Item.Properties()
-                        .setId(TRACTOR_ITEM_KEY)
-                        .useBlockDescriptionPrefix()
-        );
+        TRACTOR_ITEM = new BlockItem(TRACTOR_BLOCK, new Item.Properties()
+                .setId(TRACTOR_ITEM_KEY)
+                .useBlockDescriptionPrefix());
 
-        Registry.register(BuiltInRegistries.ITEM, TRACTOR_ID, tractorItem);
+        Registry.register(BuiltInRegistries.ITEM, TRACTOR_ID, TRACTOR_ITEM);
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS)
-                .register(entries -> entries.accept(tractorItem));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(entries -> {
+            entries.accept(TRACTOR_ITEM);
+        });
     }
 }

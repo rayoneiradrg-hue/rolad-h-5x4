@@ -1,5 +1,10 @@
-# Roland H 5x4 — proyecto base
+# Roland H 5x4 — etapa 1
 
-Este ZIP contiene únicamente la estructura inicial de un mod Fabric y puntos de entrada para comprobar que el proyecto carga. **No contiene todavía un tractor jugable, modelo 3D, controles, sonidos ni cortadora funcional.**
+Proyecto fuente para Minecraft Java 26.3 + Fabric.
 
-Está preparado como punto de partida y requiere validar las versiones de Minecraft/Fabric y completar el desarrollo antes de compilar un JAR instalable.
+Incluye la estructura Fabric, inicializadores y una tecla K que muestra un mensaje de diagnóstico.
+**No contiene todavía el tractor jugable ni su modelo 3D, conducción, sonidos o cortadora.**
+Este ZIP es código fuente, no un JAR compilado.
+
+Requiere Java 25 y Gradle/Fabric Loom compatible. Ejecutar `gradle build`; el JAR se genera en `build/libs/`.
+La compilación y compatibilidad deben verificarse antes de instalar.

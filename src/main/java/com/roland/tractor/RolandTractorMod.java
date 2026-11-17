@@ -1,14 +1,12 @@
 package com.roland.tractor;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -39,9 +37,5 @@ public class RolandTractorMod implements ModInitializer {
                 .useBlockDescriptionPrefix());
 
         Registry.register(BuiltInRegistries.ITEM, TRACTOR_ID, TRACTOR_ITEM);
-
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(entries -> {
-            entries.accept(TRACTOR_ITEM);
-        });
     }
 }

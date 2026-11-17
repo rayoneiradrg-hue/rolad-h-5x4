@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "roland:block/roland_tractor"
+    }
+  }
+}

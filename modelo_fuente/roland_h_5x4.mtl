@@ -1,0 +1,12 @@
+newmtl rojo
+Kd 0.72 0.04 0.03
+newmtl amarillo
+Kd 0.95 0.68 0.05
+newmtl negro
+Kd 0.06 0.06 0.06
+newmtl metal
+Kd 0.48 0.50 0.52
+newmtl neumatico
+Kd 0.025 0.025 0.025
+newmtl luz
+Kd 1.0 0.9 0.55

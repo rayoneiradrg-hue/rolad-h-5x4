@@ -1,13 +1,18 @@
 {
   "schemaVersion": 1,
-  "id": "rolandtractor",
+  "id": "roland",
   "version": "${version}",
-  "name": "Roland H 5x4",
-  "description": "Vehiculo agricola Roland H 5x4 — prototipo en desarrollo.",
+  "name": "Roland H 5x4 - Modelo visible",
+  "description": "Primera entrega visual: tractor est\u00e1tico para colocar y observar. No es montable ni funcional.",
+  "authors": [
+    "Roland H 5x4 Project"
+  ],
+  "license": "All-Rights-Reserved",
   "environment": "*",
   "entrypoints": {
-    "main": ["ar.roland.tractor.RolandTractorMod"],
-    "client": ["ar.roland.tractor.RolandTractorClient"]
+    "main": [
+      "com.roland.tractor.RolandTractorMod"
+    ]
   },
   "depends": {
     "fabricloader": ">=0.20.1",
